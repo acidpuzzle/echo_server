@@ -1,3 +1,3 @@
-A simple, non-blocking echo server and client. The select() function is used. Python.
+A simple, non-blocking echo server and client. Python.
 
-Простой, неблокирующий эхо сервер и клиент для него. Используется функция select(). Python.
+Простой, неблокирующий эхо сервер и клиент для него. Python.

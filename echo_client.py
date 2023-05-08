@@ -5,7 +5,7 @@
 from socket import socket, SHUT_RDWR
 
 
-EXIT_MSG = ["quit", "exit"]
+EXIT_MSG = ["/quit", "/exit"]
 
 
 def client_program(host, port):

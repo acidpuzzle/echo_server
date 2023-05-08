@@ -36,19 +36,19 @@ def run_server(ip_addr=BIND_ADDRESS, tcp_port=BIND_PORT):
 
 def accept_connection(srv_socket: socket) -> None:
     client_socket, _ = srv_socket.accept()
-    logger.debug(f"Accept connection from `{_str_sock(client_socket)}`")
+    logger.debug(f"Accept connection from {_str_sock(client_socket)!r}")
     READ_FD.append(client_socket)
 
 
 def recive_and_send_message(clnt_socket: socket):
     recived_msg = clnt_socket.recv(BUFFER)
     string_msg = recived_msg.decode('UTF-8').strip()
-    logger.debug(f"Reccived message `{string_msg}` from client socket `{_str_sock(clnt_socket)}`")
+    logger.debug(f"Reccived message {string_msg!r} from client socket {_str_sock(clnt_socket)!r}")
     if string_msg.lower() in EXIT_MSG:
-        logger.debug(f"Remove socket `{_str_sock(clnt_socket)}` from monitoring.")
+        logger.debug(f"Remove socket {_str_sock(clnt_socket)!r} from monitoring.")
         READ_FD.remove(clnt_socket)
         clnt_socket.shutdown(SHUT_RDWR)
-        logger.debug(f"Client socket `{_str_sock(clnt_socket)}` is closed.")
+        logger.debug(f"Client socket {_str_sock(clnt_socket)!r} is closed.")
     else:
         clnt_socket.send(recived_msg)
 
